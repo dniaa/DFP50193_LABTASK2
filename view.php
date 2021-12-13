@@ -1,20 +1,113 @@
 <?php
-session_start();
+$name = $_POST['name'];
+$age = $_POST['age'];
+$address = nl2br($_POST['address']);
+$code = $_POST['code'];
+$state = $_POST['state'];
+$email = $_POST['email'];
+$phone = $_POST['phone'];
+$gender = $_POST['gender'];
 
-echo"Display Form Detail <br>";
-echo "Name : ".$_SESSION['name']."<br>";
-echo "Age : ".$_SESSION['age']."<br>";
-echo "Address : ".$_SESSION['address']."<br>";
-echo "Postcode : ".$_SESSION['code']."<br>";
-echo "State : ".$_SESSION['state']."<br>";
-echo "No Phone : ".$_SESSION['phone']."<br>";
-echo "Gender : ".$_SESSION['gender']."<br>";
-echo "Level : ".$_SESSION['Level']."<br>";
-echo "status : ".$_SESSION['status']."<br>";
-echo "Email : ".$_SESSION['email']."<br>";
-echo "Username : ".$_SESSION['username']."<br>";
-echo "Password : ".$_SESSION['password']."<br>";
+if (isset($_POST['Diploma'])) {
+    $Diploma = $_POST['Diploma'];
+} else {
+    $Diploma = '';
+}
+if (isset($_POST['Degree'])) {
+    $Degree = $_POST['Degree'];
+} else {
+    $Degree = '';
+}
+if (isset($_POST['Master'])) {
+    $Master = $_POST['Master'];
+} else {
+    $Master = '';
+}
+if (isset($_POST['PHD'])) {
+    $PHD = $_POST['PHD'];
+} else {
+    $PHD = '';
+}
+
+
+if ($name == '') {
 ?>
-<br>
+    <script>
+        alert('Please insert your name ');
+        window.location = 'index.php';
+    </script>
 
-<a href="set.php">Edit Session</a>
+<?php
+} elseif ($age == '') {
+?>
+    <script>
+        alert('Please insert your age ');
+        window.location = 'index.php';
+    </script>
+
+<?php
+} elseif ($address == '') {
+?>
+    <script>
+        alert('Please insert your address ');
+        window.location = 'index.php';
+    </script>
+
+<?php
+} elseif ($code == '') {
+?>
+    <script>
+        alert('Please insert your poscode ');
+        window.location = 'index.php';
+    </script>
+
+<?php
+} elseif ($state == '') {
+?>
+    <script>
+        alert('Please insert your state ');
+        window.location = 'index.php';
+    </script>
+
+<?php
+} elseif ($email == '') {
+?>
+    <script>
+        alert('Please insert your email ');
+        window.location = 'index.php';
+    </script>
+
+<?php
+} elseif ($phone == '') {
+?>
+    <script>
+        alert('Please insert your number phone ');
+        window.location = 'index.php';
+    </script>
+
+<?php
+} elseif ($gender == '') {
+?>
+    <script>
+        alert('Please insert your gender ');
+        window.location = 'index.php';
+    </script>
+
+<?php
+} else {
+    session_start();
+    $_SESSION['name'] = $name;
+    $_SESSION['age'] = $age;
+    $_SESSION['gender'] = $gender;
+    $_SESSION['address'] = $address;
+    $_SESSION['code'] = $code;
+    $_SESSION['state'] = $state;
+    $_SESSION['email'] = $email;
+    $_SESSION['phone'] = $phone;
+    $_SESSION['Diploma'] = $Diploma;
+    $_SESSION['Degree'] = $Degree;
+    $_SESSION['Master'] = $Master;
+    $_SESSION['PHD'] = $PHD;
+
+    header('location: set.php');
+}
